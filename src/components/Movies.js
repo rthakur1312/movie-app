@@ -87,10 +87,10 @@ const Movies = () => {
 
     return (
         <div>
-          <SearchInput searchValue = {searchValue} setSearchValue = {setSearchValue}  />
-          {searchValue && ( // Only render movies if searchValue is not empty
-          <div className=' w-full md:w-[80%] m-auto'>
-              <h1 className='text-3xl font-bold font-serif ml-16 text-center'>Search Results for : <span className='text-red-600'>{searchValue}</span></h1>
+        <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
+        {searchValue && searchValue.length > 2 && ( // Added && after the condition
+            <div className='w-full md:w-[80%] m-auto'>
+                <h1 className='text-3xl font-bold font-serif ml-16 text-center'>Search Results for : <span className='text-red-600'>{searchValue}</span></h1>
                 <div id="movies">
                     {movies.length > 0 ? (
                         movies.map(movie => (
@@ -109,8 +109,11 @@ const Movies = () => {
                         <p className='text-center text-lg'>No movies found</p>
                     )}
                 </div>
-                </div>
-            )}
+            </div>
+        )}
+        {searchValue && searchValue.length <= 2 && (
+        <p className='text-center text-lg'>Please add more than 2 characters to search for a movie</p>
+    )}
         <FavoriteMovieCarousel favorites={favorites} removeFavoriteMovie={removeFavoriteMovie} />
         </div>
     );
