@@ -1,54 +1,63 @@
-import {motion, useAnimation, useScroll, useInView, useTransform} from "framer-motion"
-import { useEffect, useRef } from "react"
+import {
+  motion,
+  useAnimation,
+  useScroll,
+  useInView,
+  useTransform,
+} from "framer-motion";
+import { useEffect, useRef } from "react";
+import Model from "./Model";
 
 const gridSquareVariants = {
-    hidden: {opacity:0},
-                show: {
-                    opacity:1,
-                    transition: {
-                        staggerChildren: 0.25,
-                    },
-                },
-}
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25,
+    },
+  },
+};
 
 const svgIconVariants = {
-    hidden: {
-        opacity: 0,
-        pathLength: 0,
-        fill: 'rgba(252, 211, 77, 0)',
-    },
-    visible: {
-        opacity: 1,
-        pathLength: 1,
-        fill: 'rgba(252, 211, 77, 1)',
-    },
+  hidden: {
+    opacity: 0,
+    pathLength: 0,
+    fill: "rgba(252, 211, 77, 0)",
+  },
+  visible: {
+    opacity: 1,
+    pathLength: 1,
+    fill: "rgba(252, 211, 77, 1)",
+  },
 };
 
 const ScrollAnimations = () => {
-    const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
-    const isInView = useInView(containerRef, {once:true})
-    const mainControls = useAnimation()
+  const isInView = useInView(containerRef, { once: true });
+  const mainControls = useAnimation();
 
-    const {scrollYProgress} = useScroll({
-        target : containerRef,
-        offset: ['start end', 'end end']
-    })
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
 
-    const paragraphTwoValue = useTransform(
-        scrollYProgress,
-        [0,1],
-        ["100%", "20%"]
-    )
+  const paragraphTwoValue = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["100%", "10%"]
+  );
 
-    useEffect(() => {
-        if(isInView) {
-            mainControls.start('visible')
-        }
-    })
-    return (
-        <div className="flex gap-10 overflow-hidden items-center w-[80%] m-auto pt-14">
-            <motion.section 
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  });
+  return (
+    <div className="flex gap-10 overflow-hidden items-center w-[80%] m-auto pt-14 h-[600px] relative">
+      <Model />
+
+      {/* <motion.section 
             variants={gridSquareVariants}
             initial="hidden"
             animate="show"
@@ -73,8 +82,11 @@ const ScrollAnimations = () => {
                              />
                     </motion.svg>
                  </motion.div>
-            </motion.section>
-            <section className="flex flex-col gap-10 mb-10" ref={containerRef}>
+            </motion.section> */}
+      <section
+        className="flex flex-col gap-10 mb-10 w-[60%] ml-auto"
+        ref={containerRef}
+      >
         {/* <motion.h1 className="text-5xl tracking-wide text-slate-100 text-center"
          animate={mainControls}
          initial="hidden"
@@ -89,22 +101,16 @@ const ScrollAnimations = () => {
          >
           Lorem ipsum
         </motion.h1> */}
-        <motion.p 
-            className="text-slate-100 font-thin text-xl w-[70%] mx-auto"
-            style={{translateX: paragraphTwoValue}}
-            >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
-          </motion.p>
+        <motion.p
+          className="text-slate-100 font-thin text-xl w-[70%] mx-auto"
+          style={{ translateX: paragraphTwoValue }}
+        >
+          "Explore this 3D model by rotating it! Click and drag on the model to
+          see it from different angles."
+        </motion.p>
       </section>
-        </div>
-    )
-
-}
+    </div>
+  );
+};
 
 export default ScrollAnimations;

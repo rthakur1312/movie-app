@@ -9,6 +9,29 @@ const Navbar = () => {
 
     const [scrollPositionTop, setScrollPositionTop] = useState(true);
 
+    // const gridSquareVariants = {
+    //     hidden: { opacity: 0 },
+    //     show: {
+    //       opacity: 1,
+    //       transition: {
+    //         staggerChildren: 0.25,
+    //       },
+    //     },
+    //   };
+      
+      const svgIconVariants = {
+        hidden: {
+          opacity: 0,
+          pathLength: 0,
+          fill: "rgba(252, 211, 77, 0)",
+        },
+        visible: {
+          opacity: 1,
+          pathLength: 1,
+          fill: "rgba(252, 211, 77, 1)",
+        },
+      };
+
     useEffect(() => {
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
@@ -53,7 +76,25 @@ const Navbar = () => {
                             </div>
                         </li>
                     </ul>
-                    <motion.div>
+                    <div className='flex'>
+                        <motion.div
+                    variants = {{hidden: {opacity:0}, show: {opacity:1}}} className="mr-6">
+                    <motion.svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        className="w-[50px] stroke-amber-500 stroke-[0.5]"    
+                    >
+                          <motion.path d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" 
+                            variants={svgIconVariants}
+                            initial="hidden"
+                            animate="visible"
+                            transition={{
+                                default: {duration:2, ease: "easeInOut", delay:1, repeat:Infinity,repeatType:"reverse",repeatDelay:1},
+                                fill: {duration: 2, ease: "easeIn", delay: 2, repeat:Infinity, repeatType:"reverse", repeatDelay:1  }
+                            }}
+                             />
+                    </motion.svg>
+                 </motion.div>
                     <motion.button 
                     whileTap={{scale:0.9}} 
                     whileHover={{scale:1.1, backgroundColor: '#d1d5db', color:'black'}}
@@ -61,7 +102,8 @@ const Navbar = () => {
                     className='bg-emerald-600 w-1/2 py-0.5 rounded-lg text-lg text-gray-100 tracking-wide w-[200px]'>
                         GITHUB
                     </motion.button>
-                </motion.div>
+                </div>
+                
                 </nav>
             </div>
     );
