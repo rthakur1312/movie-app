@@ -1,38 +1,188 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+* {
+    box-sizing: border-box;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: rgb(26, 29, 41);
+    color: #d9e2f1;
+    min-height: 100vh;
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+#movies {
+    width: 90%;
+    max-width: 70rem;
+    list-style: none;
+    margin: 3rem auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1rem;
 }
+
+.movie-item {
+    background-color: rgb(75, 78, 90);
+    border-radius: 1rem;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.movie-item article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom:20px;
+  }
+  
+  .movie-item h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.75rem 0;
+  }
+
+  /* Slick Arrow Styles */
+
+  .slick-list {
+    width:81%;
+    margin:auto;
+  }
+
+  .slick-slider {
+    width:80%;
+    margin:auto;
+  }
+
+  .box {
+    position:relative;
+  }
+
+  .hero-carousel {
+    margin-top:-68px;
+  }
+
+  .slick-arrow.prev svg {
+    margin-left:17px;
+    margin-top:15px;
+  }
+
+  .slick-arrow.next svg {
+    margin-top: 14px;
+    margin-left: 18px;
+  }
+
+  .cover-image img {
+    height: 100vh;
+    object-fit: cover;
+    width: 100vw;
+  }
+
+  .details {
+    position: absolute;
+    top: 30%;
+    left: 7%;
+    width: 50%;
+  }
+  .details p {
+    color:#fff;
+  }
+  .details h4 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color:#fff;
+  }
+
+  .details h4 span {
+    color: #e50813;
+    font-weight:bold;
+  }
+
+  .details h1 {
+    -webkit-text-fill-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: url('https://creative-sorbet-96d1b6.netlify.app/static/media/texure.5fd81b0ea718d21dec89.jpg');
+    background-repeat: repeat;
+    font-size: 90px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  /* Navigation */
+
+  nav.transparent-navbar {
+    background:transparent;
+  }
+
+
+
+  /* Favorites */
+
+  .image-container:hover .favorites-overlay {
+    opacity:1
+  }
+
+  #progress {
+    /* position: fixed;
+    top: 20px;
+    left: 20px; */
+    transform: rotate(-90deg);
+  }
+  
+  circle {
+    stroke-dashoffset: 0;
+    stroke-width: 15%;
+    fill: none;
+  }
+  
+  .bg {
+    opacity: 0.3;
+  }
+  
+  #progress .indicator {
+    stroke: red;
+  }
+  
+  .favorites-list {
+    display: flex;
+    list-style: none;
+    height: 300px;
+    overflow-x: scroll;
+    padding: 20px 0;
+    margin: 0 auto;
+  }
+
+  .favorites-list li {
+    margin: 0 20px 0 0;
+  }
+  .favorites-list li img {
+    height:265px;
+  }
+  ::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background: #fff3;
+    -webkit-border-radius: 1ex;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #fff ;
+    -webkit-border-radius: 1ex;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: #fff3;
+  }
+
+
+  .favorites-container {
+    display:flex;
+  }
+  
