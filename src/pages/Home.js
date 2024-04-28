@@ -1,12 +1,11 @@
 import React from "react";
-import {Hero} from "../components/Hero";
-import Model from "../components/Model";
-import ScrollAnimations from "../components/ScrollAnimations";
+import { Hero } from "../components/Homepage/Hero";
+import ModelSection from "../components/Homepage/ModelSection";
 
 const Home = () => (
     <>
     <Hero />
-    <ScrollAnimations />
+    <ModelSection />
     </>
 );
 
