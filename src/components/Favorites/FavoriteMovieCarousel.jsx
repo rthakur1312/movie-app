@@ -88,9 +88,11 @@ const FavoriteMovieCarousel = ({ favorites, removeFavoriteMovie, defaultImage })
         </Slider>
       )}
       {favorites.length === 0 && (
+      <div className="py-4">
         <p className="text-center text-lg">
           You do not have any favorites yet.
         </p>
+        </div>
       )}
     </div>
   );
