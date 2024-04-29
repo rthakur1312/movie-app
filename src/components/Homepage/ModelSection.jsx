@@ -1,6 +1,4 @@
 import Model from "./Model";
-
-
 const ModelSection = () => {
   return (
     <div className="md:flex gap-10 overflow-hidden items-center w-[80%] m-auto pt-14 h-[600px] relative">
